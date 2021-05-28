@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>时钟</title>
+</head>
+<body>
+    
+    <div class="clock num">
+        <div class="hour"  style="--number:5"></div>
+        <div class="min" style="--number:15"></div>
+        <div class="sec" style="--number:30"></div>        
+        
+        <!-- 数字时钟 -->
+        <div class="time" style="--color:255">
+            <div class="h" style="--number:5;"></div>
+            <div class="m" style="--number:15"></div>
+            <div class="s" style="--number:30"></div>
+        </div>
+
+        <!-- 表盘 -->
+        <div class="circular">
+            <svg viewBox="0 0 100 100"> <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" /> 
+                <text> <textPath xlink:href="#circle">01 02 03 04 05 06 07 08 09 10 11 12 </textPath> </text> 
+            </svg>
+        </div>
+    </div>
+
+
+
+    <script>
+        const current = new Date()
+        const ss = current.getSeconds()
+        const ms = current.getMinutes()
+        const hs = current.getHours()
+        // 当前指针的指向角度，用 animation-delay 实现
+        document.querySelector('.sec').style.setProperty("--number", ss);
+        document.querySelector('.min').style.setProperty("--number", ms);
+        document.querySelector('.hour').style.setProperty("--number", hs);
+        document.querySelector('.s').style.setProperty("--number", ss);
+        document.querySelector('.m').style.setProperty("--number", ms);
+        document.querySelector('.h').style.setProperty("--number", hs);
+    </script>
+
+</body>
+
+
+</html>
